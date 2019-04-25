@@ -45,15 +45,18 @@ class App extends React.Component {
     })
   }
 
+  toggleItem = id => {
+    console.log(id)
+  }
+
   render() {
     return (
       <div>
         <h2>Welcome to your Todo App!</h2>
 
-        {/* iterates through object array and lists them to the list */}
-        {this.state.tasksOnState.map(task => (
-          <TodoList stateTask={task} />
-        ))}
+        {console.log(<TodoList list={this.state.tasksOnState} />)}
+
+        <TodoList list={this.state.tasksOnState} />
 
         <TodoForm
           // on TodoForm.js there are values, and these are assigned to it.

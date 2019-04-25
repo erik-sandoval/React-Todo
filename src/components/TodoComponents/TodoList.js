@@ -3,9 +3,14 @@ import React from 'react'
 function TodoList(props) {
 
     return (
-        <div >
-            {/* stateTask becomes an object from tasksOnState*/}
-            <p>{props.stateTask.task}</p>
+        <div>
+            {
+                props.list.map(item => (
+                    <div key={item.id}>
+                        {item.task}
+                    </div>
+                ))
+            }
         </div>
     )
 }
