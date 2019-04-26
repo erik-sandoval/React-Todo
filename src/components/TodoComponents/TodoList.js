@@ -4,7 +4,7 @@ import "./Todo.scss"
 
 function TodoList(props) {
     return (
-        <div>
+        <div className="list-item-container">
             {
                 props.list.map(item => (
                     <Todo key={item.id} item={item} toggleItem={props.toggleItem} />

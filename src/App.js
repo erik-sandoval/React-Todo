@@ -83,18 +83,21 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <h2>Welcome to your Todo App!</h2>
+      <div className="container">
+        <div className="list">
+          <h2>Welcome to your Todo App!</h2>
 
-        <TodoList list={this.state.tasksOnState} toggleItem={this.toggleItem} />
 
-        <TodoForm
-          // on TodoForm.js there are values, and these are assigned to it.
-          addTask={this.addTask}
-          formState={this.state}
-          handleProp={this.handleChanges}
-          clearCompleted={this.clearCompleted}
-        />
+          <TodoList list={this.state.tasksOnState} toggleItem={this.toggleItem} />
+
+          <TodoForm
+            // on TodoForm.js there are values, and these are assigned to it.
+            addTask={this.addTask}
+            formState={this.state}
+            handleProp={this.handleChanges}
+            clearCompleted={this.clearCompleted}
+          />
+        </div>
       </div>
     );
   }
