@@ -1,14 +1,28 @@
 import React from 'react';
 import TodoForm from './components/TodoComponents/TodoForm';
 import TodoList from './components/TodoComponents/TodoList';
-import toDo from './components/TodoComponents/Todo';
+import "./components/TodoComponents/Todo.scss"
+
+
+const list = [
+  {
+    task: 'Organize Garage',
+    id: 1528817077286,
+    completed: false
+  },
+  {
+    task: 'Bake Cookies',
+    id: 1528817084358,
+    completed: false
+  }
+];
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
       // links from array on Todo
-      tasksOnState: toDo,
+      tasksOnState: list,
       tasks: {
         task: "",
         id: Date.now(),
@@ -46,26 +60,42 @@ class App extends React.Component {
   }
 
   toggleItem = id => {
-    console.log(id)
+    this.setState({
+      groceries: this.state.tasksOnState.map(item => {
+        if (item.id === id) {
+          item.completed = !item.completed;
+          return {
+            ...item,
+            completed: !item.completed
+          }
+        } else {
+          return item;
+        }
+      })
+    })
   }
+
+  clearCompleted = () => {
+    this.setState({
+      tasksOnState: this.state.tasksOnState.filter(item => item.completed !== true)
+    })
+  };
 
   render() {
     return (
       <div>
         <h2>Welcome to your Todo App!</h2>
 
-        {console.log(<TodoList list={this.state.tasksOnState} />)}
-
-        <TodoList list={this.state.tasksOnState} />
+        <TodoList list={this.state.tasksOnState} toggleItem={this.toggleItem} />
 
         <TodoForm
           // on TodoForm.js there are values, and these are assigned to it.
           addTask={this.addTask}
           formState={this.state}
           handleProp={this.handleChanges}
+          clearCompleted={this.clearCompleted}
         />
       </div>
-
     );
   }
 }

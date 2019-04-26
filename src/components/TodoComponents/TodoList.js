@@ -1,14 +1,13 @@
 import React from 'react'
+import Todo from './Todo'
+import "./Todo.scss"
 
 function TodoList(props) {
-
     return (
         <div>
             {
                 props.list.map(item => (
-                    <div key={item.id}>
-                        {item.task}
-                    </div>
+                    <Todo key={item.id} item={item} toggleItem={props.toggleItem} />
                 ))
             }
         </div>

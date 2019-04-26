@@ -1,15 +1,18 @@
+import React from 'react'
+import "./Todo.scss"
 
-const toDo = [
-    {
-        task: 'Organize Garage',
-        id: 1528817077286,
-        completed: false
-    },
-    {
-        task: 'Bake Cookies',
-        id: 1528817084358,
-        completed: false
-    }
-];
+const Todo = props => {
 
-export default toDo
+    return (
+        <div
+            onClick={() => props.toggleItem(props.item.id)}
+            className={`item${props.item.completed ? " completed" : ""}`}
+        >
+            <p>{props.item.task}</p>
+        </div>
+    )
+
+}
+
+
+export default Todo
